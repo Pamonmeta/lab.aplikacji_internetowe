@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script>
+    function plus() {
+        let a = parseFloat(document.getElementById("liczba1").value);
+        let b = parseFloat(document.getElementById("liczba2").value);
+        let wynik = a + b;
+        let plu = document.getElementById("wynik");
+        plu.innerHTML = "A + B = " + wynik;
+    }
+    function minus() {
+        let a = parseFloat(document.getElementById("liczba1").value);
+        let b = parseFloat(document.getElementById("liczba2").value);
+        let wynik = a -b;
+        let mins = document.getElementById("wynik");
+        mins.innerHTML = "A - B = " + wynik;
+    }
+    function mult() {
+        let a = parseFloat(document.getElementById("liczba1").value);
+        let b = parseFloat(document.getElementById("liczba2").value);
+        let wynik = a*b;
+        let mul = document.getElementById("wynik");
+        mul.innerHTML = "A * B = " + wynik;
+    }
+    function divi() {
+        let a = parseFloat(document.getElementById("liczba1").value);
+        let b = parseFloat(document.getElementById("liczba2").value);
+        let wynik = a/b;
+        let div = document.getElementById("wynik");
+        div.innerHTML = "A / B = " + wynik;
+    }
+
+</script>
+</head>
+<body>
+    <input id="liczba1"><br>
+    <input id="liczba2"><br>
+
+    <button onclick="plus();">Dodawanie</button>
+    <button onclick="minus();">Odejmowanie</button>
+    <button onclick="mult();">Mnozenie</button>
+    <button onclick="divi();">Dzielenie</button>
+
+    <p id="wynik"></p>
+</body>
+</html>

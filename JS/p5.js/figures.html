@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="p5.min.js"></script>
+</head>
+
+<body>
+    <main></main>
+    <script>
+        function setup() {
+            createCanvas(640, 480, WEBGL);
+        }
+        let zm;
+        function szescianP() {
+            zm = 1;
+        }
+        function sferaP() {
+            zm = 2;
+        }
+        function stozekP() {
+            zm = 3;
+        }
+
+        let kat = 0.0; // obiekt będzie animowany
+        function draw() {
+            background(200, 142, 172);
+            lights();
+            pointLight(79, 142, 172, 0, 0);
+            pointLight(170, 142, 172, 500, 400);
+            fill(108, 150, 170);
+            stroke(126, 57, 71);
+            rotateY(kat); // potem obrót wzdłóż osi Y
+            if(zm == 1){
+                box(100); 
+            }
+            if(zm == 2){
+                sphere(100); 
+            }
+            if(zm == 3){
+                cone(100); 
+            }
+            
+            kat += 0.03; // zwiększenie kąta obrotu
+        }
+        
+
+
+    </script>
+    <button id="szescian" onclick="szescianP()">sześcian</button><br>
+    <button id="sfera" onclick="sferaP()">sfera</button><br>
+    <button id="stozek" onclick="stozekP()">stożek</button><br>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #pierw {
+            background-color: rgb(87, 172, 160);
+        }
+        tr {
+            height: 50px;
+        }
+        div a {
+            color: greenyellow;
+            background: silver;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="dane" border="1">
+        <tr id="pierw">
+            <td><a href="http://google.com">Google</a></td>
+            <td><a href="http://google.com">Google</a></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><a href="http://google.com">Google</a></td>
+        </tr>
+        <tr>
+            <td><a href="http://google.com">Google</a></td>
+            <td></td>
+            <td><a href="http://google.com">Google</a></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><a href="http://google.com">Google</a></td>
+            <td></td>
+        </tr>
+    </table>
+    <div class="hiper">
+        <a href="http://google.com">Google</a>
+        <a href="http://google.com">Google</a>
+        <a href="http://google.com">Google</a>
+    </div>
+    <!-- 1 -->
+    <input id="text" onkeypress="wypisz();">
+    <div id="wynik"></div><br>
+    <!-- 2 -->
+    <button id="inputy" onclick="noweinp()">Tworz</button><br>
+    <div class="sumy" id="suda"></div><br>
+    <!-- 3 -->
+    <button id="suma" onclick="sumcount()">Suma</button><br>
+    <!-- 4 -->
+    <table id="dane" border="1"></table>
+    <!-- 5 -->
+    <script>
+        // 1
+        function wypisz() {
+            let tx = document.getElementById("text");
+            let plu = document.getElementById("wynik");
+            plu.innerHTML = tx.value;
+        }
+        // 2
+        function noweinp() {
+            let suda = document.getElementById("suda");
+            let tx2 = parseFloat(document.getElementById("text").value);
+            if (1 <= tx2 && tx2 <= 10) {
+                for (let i = 0; i < tx2; i++) {
+                    let a = document.createElement("input");
+                    a.id = "ip" + [i];
+                    suda.appendChild(a);
+
+                }
+            }
+            else { suda.innerHTML = "Nie ta liczba!"; }
+        }
+        // 3
+        function sumcount() {
+            let suma = 0;
+            let tx2 = parseFloat(document.getElementById("text").value);
+            for (let i = 0; i < tx2; i++) {
+                let sumer = parseFloat(document.getElementById("ip" + [i]).value);
+                suma += sumer;
+            }
+            alert("Suma to: " + suma);
+        }
+        // 4
+        let komorki = document.querySelectorAll("#dane td");
+        for (let i = 0; i < komorki.length; i++) {
+            let losowa = 1 + Math.floor(Math.random() * 9);
+            if (komorki[i].innerHTML == '') {
+                komorki[i].innerHTML = losowa;
+            }
+            else { }
+        }
+        // 5
+        class Projekt {
+            constructor(czas, ocena) {
+                this.czas = czas;
+                this.ocena = ocena;
+            }
+        }
+        class Osoba extends Projekt {
+            constructor(czas, ocena, imie, nazwisko) {
+                super(czas, ocena)
+                this.imie = imie;
+                this.nazwisko = nazwisko;
+            }
+            dodajOsobe() {
+                let gdzie = document.getElementById("dane");
+                let t = document.createElement("tr");
+                let a = document.createElement("td");
+                let b = document.createElement("td");
+                a.innerHTML = this.imie;
+                b.innerHTML = this.nazwisko;
+                gdzie.appendChild(t);
+                t.appendChild(a);
+                t.appendChild(b);
+            }
+        }
+        const os1 = new Osoba(5, 10, "Roman", "Lukash");
+        os1.dodajOsobe();
+    </script>
+</body>
+
+</html>

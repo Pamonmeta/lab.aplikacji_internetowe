@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body>div div {
+            float: left;
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            margin: 50px;
+            text-align: center;
+            background-color: rgba(64, 115, 128, 0.616);
+
+        }
+        .styli {
+            width: 100px;
+            height: 50px;
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="styli" id="kosci">Kosci<br></div>
+    <div id="ko"><br></div><br><br><br><br><br><br><br><br><br><br>
+    <div id="info"></div><br><br>
+    <div class="styli" id="newone">Nowy</div><br>
+    <script>
+        let fivesDiv = document.getElementById("kosci"); // odnalezienie div o id="kosci"
+        let koDiv = document.getElementById("ko"); // odnalezienie div o id="ko"
+        let element = document.getElementById("info");
+        let wynik = 0;
+        let newone = document.getElementById("newone");
+
+        fivesDiv.onclick = function () { // dodanie zdarzenia onclick - po kliknięciu
+            koDiv.innerHTML = "";
+            for (let i = 0; i < 5; i++) {
+                let firDiv = document.createElement("div");
+                let losowaf = 1 + Math.floor(Math.random() * 6);
+                firDiv.innerHTML = losowaf;
+                koDiv.appendChild(firDiv);
+
+                firDiv.onclick = function () {
+                    koDiv.removeChild(firDiv);
+                    wynik += 1;
+                    element.innerHTML = "Liczba wybranych: " + wynik;
+                }
+            }
+        }
+        newone.onclick = function () { // dodanie zdarzenia onclick - po kliknięciu
+            for (let i = 0; i < wynik; i++) {
+                let nfirDiv = document.createElement("div");
+                let losowan = 1 + Math.floor(Math.random() * 6);
+                nfirDiv.innerHTML = losowan;
+                newone.appendChild(nfirDiv);
+            }
+        }
+    </script>
+</body>
+
+</html>
